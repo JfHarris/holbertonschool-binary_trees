@@ -10,14 +10,15 @@
 
 int confirm_tree(const binary_tree_t *tree, int min, int max)
 {
-    {
-	if (tree == NULL)
-	    return (1);
+	{
+		if (tree == NULL)
+		return (1);
+		
+		if (tree->n <= min || tree->n >= max)
+		return (0);
 
-	if (tree->n <= min || tree->n >= max)
-	    return (0);
-
-	return ((confirm_tree(tree->left, min, tree->n)) && (confirm_tree(tree->right, tree->n, max)));
+	return ((confirm_tree(tree->left, min, tree->n)) &&
+	(confirm_tree(tree->right, tree->n, max)));
     }
 }
 
