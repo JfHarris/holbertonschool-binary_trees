@@ -8,3 +8,48 @@
  */
 
 bst_t *bst_insert(bst_t **tree, int value)
+{
+	bst_t *existing;
+    bst_t *created;
+
+	if (tree != NULL)
+	{
+		existing = *tree;
+		if (existing == NULL)
+		{
+			created = binary_tree_node(existing, value);
+			if (created == NULL)
+            {
+				return (NULL);
+            }
+			return (*tree = created);
+		}
+		if (value < existing->n)
+		{
+			if (existing->left != NULL)
+            {
+				return (bst_insert(&existing->left, value));
+            }
+			created = binary_tree_node(existing, value);
+			if (created == NULL)
+            {
+				return (NULL);
+            }
+			return (existing->left = created);
+		}
+		if (value > existing->n)
+		{
+			if (existing->right != NULL)
+            {
+				return (bst_insert(&existing->right, value));
+            }
+			created = binary_tree_node(existing, value);
+			if (created == NULL)
+            {
+				return (NULL);
+            }
+			return (existing->right = created);
+		}
+	}
+	return (NULL);
+}
