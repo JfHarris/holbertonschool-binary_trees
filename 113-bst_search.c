@@ -8,7 +8,7 @@
  */
 
 bst_t *bst_search(const bst_t *tree, int value)
-{	
+{
 	if (value < tree->n)
 	{
 		return (bst_search(tree->left, value));
@@ -17,7 +17,7 @@ bst_t *bst_search(const bst_t *tree, int value)
 	{
 		return (bst_search(tree->right, value));
 	}
-    if (tree == NULL || tree->n == value)
+	if (tree == NULL || tree->n == value)
 	{
 		return ((bst_t *)tree);
 	}
